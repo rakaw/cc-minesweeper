@@ -74,4 +74,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * Thanks to Codecademy for teaching me how to build minesweeper!
-* Thanks to [Purplebooth] for the README.md template
+* Thanks to [Purplebooth](https://github.com/purplebooth/) for the README.md template
