@@ -7,9 +7,11 @@ DESCRIPTION: MINESWEEPER
 
 */
 
-// CONST FUNCTION FOR A BLANK BOARD
-//// 1. Add an empty space to each column per row
-//// 2. Add each row to a larger game board, constructing player board
+
+/* CONST FUNCTION FOR A BLANK BOARD
+1. Add an empty space to each column per row
+2. Add each row to a larger game board, constructing player board
+*/
 const generatePlayerBoard = (numberOfRows, numberOfColumns) => {
   //create empty board
   let board = [];
