@@ -14,9 +14,9 @@ DESCRIPTION: MINESWEEPER
 2. Add each row to a larger game board, constructing the player board
 */
 const generatePlayerBoard = (numberOfRows, numberOfColumns) => {
-  //create empty board
+  // Create empty board
   let board = [];
-  //for each row, create columns and push ' '
+  // For each row, create columns and push ' '
   for (i = 0; i < numberOfRows; i++) {
     let row = [];
     for (j = 0; j < numberOfColumns; j++) {
@@ -26,7 +26,6 @@ const generatePlayerBoard = (numberOfRows, numberOfColumns) => {
   }
   return board;
 }
-//console.log(generatePlayerBoard(3, 3));
 
 
 
@@ -36,9 +35,9 @@ const generatePlayerBoard = (numberOfRows, numberOfColumns) => {
 3. Add bombs to random squares on game board
 */
 const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
-  //create empty board
+  // Create empty board
   let board = [];
-  //for each row, create columns and push ' '
+  // For each row, create columns and push ' '
   for (i = 0; i < numberOfRows; i++) {
     let row = [];
     for (j = 0; j < numberOfColumns; j++) {
