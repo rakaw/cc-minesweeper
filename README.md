@@ -10,11 +10,10 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+What you need:
+* [node.js](https://nodejs.org/en/) - LTS Version
+* Windows: [git bash](https://git-scm.com/download/win) - Windows Build
+* Mac/Linux: Terminal for nodejs
 
 ### Installing
 
@@ -33,30 +32,6 @@ until finished
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
