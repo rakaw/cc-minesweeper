@@ -20,8 +20,8 @@ What you need:
 
 ### Running Minesweeper
 
-1. Download [code](https://github.com/rakaw/cc-minesweeper)
-2. Extract Zip if needed
+1. Download the [code](https://github.com/rakaw/cc-minesweeper)
+2. Extract the zip file if needed
 3. Open Terminal (git bash for windows)
 4. cd into cc-minesweeper/src
 5. Use node.js to run Minesweeper!
