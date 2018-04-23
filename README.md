@@ -1,8 +1,6 @@
-# Minesweeper
+# Minesweeper (CLI)
 
 A JS project from codecademy, learning to code.
-
-NOTE: THIS README IS A WORK IN PROGRESS!
 
 ## Getting Started
 
@@ -17,21 +15,22 @@ What you need:
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
+1. Download and install node.js
+2. Windows: Download and install git bash
 
-Say what the step will be
+### Running Minesweeper
+
+1. Download [code](https://github.com/rakaw/cc-minesweeper)
+2. Extract Zip if needed
+3. Open Terminal (git bash for windows)
+4. cd into cc-minesweeper/src
+5. Use node.js to run Minesweeper!
 
 ```
-Give the example
-```
-
-And repeat
+cd ~/cc-minesweeper/src
+node minesweeper.js
 
 ```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Built With
 
