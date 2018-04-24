@@ -83,7 +83,7 @@ const getNumberOfNeighborBombs = (bombBoard, rowIndex, columnIndex) => {
     if (neighbourRowIndex >= 0 && neighbourRowIndex < numberOfRows &&
     neighbourColumnIndex >= 0 && neighbourColumnIndex < numberOfColumns) {
       // check for bomb in adjacent tiles
-      if (bombBoard[neighbourRowIndex][neighbourColumnIndex] !== 'B') {
+      if (bombBoard[neighbourRowIndex][neighbourColumnIndex] === 'B') {
         numberOfBombs++;
       }
     }
@@ -124,13 +124,13 @@ const printBoard = board => {
 
 
 // TEST FUNCTIONS
-let playerBoard = generatePlayerBoard(3,4);
-let bombBoard = generateBombBoard(3,4,5);
+let playerBoard = generatePlayerBoard(3,3);
+let bombBoard = generateBombBoard(3,3,5);
 console.log('Player Board: ');
 printBoard(playerBoard);
 console.log('Bomb Board: ');
 printBoard(bombBoard);
 
 console.log('Updated Player Board:')
-flipTile(playerBoard, bombBoard, 0, 0);
+flipTile(playerBoard, bombBoard, 1, 1);
 printBoard(playerBoard);
