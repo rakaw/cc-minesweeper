@@ -124,8 +124,8 @@ const printBoard = board => {
 
 
 // TEST FUNCTIONS
-let playerBoard = generatePlayerBoard(3,3);
-let bombBoard = generateBombBoard(3,3,5);
+let playerBoard = generatePlayerBoard(4,4);
+let bombBoard = generateBombBoard(4,4,5);
 console.log('Player Board: ');
 printBoard(playerBoard);
 console.log('Bomb Board: ');
