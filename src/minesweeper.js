@@ -52,11 +52,63 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
     // Randomize bomb placement
     let randomRowIndex = Math.floor(Math.random() * numberOfRows);
     let randomColumnIndex = Math.floor(Math.random() * numberOfColumns);
-    board[randomRowIndex][randomColumnIndex] = 'B';
-    numberOfBombsPlaced++;
+    // If tile doesn't already have a bomb, then it is possible to place a bomb
+    if (board[randomRowIndex][randomColumnIndex] !== 'B') {
+      board[randomRowIndex][randomColumnIndex] = 'B';
+      numberOfBombsPlaced++;
+    }
   }
   return board;
 }
+
+
+/* FUCNTION TO DISPLAY THE AMT. OF ADJACENT BOMBS
+1. Determine the size of a board
+2. use the location of a flipped tile
+3. use an array index offset system to check adjacent tiles for bombs
+4. If a bomb adjacent to the clicked tile exists, record w/ counter
+5. Return # of bombs adjacent to a flipped tile
+*/
+const getNumberOfNeighborBombs = (bombBoard, rowIndex, columnIndex) => {
+  const neighbourOffsets = [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],
+  [1,1]];
+  const numberOfRows = bombBoard.length;
+  const numberOfColumns = bombBoard[0].length;
+  let numberOfBombs = 0;
+  // search adjacent tiles to current tile
+  neighbourOffsets.forEach(offset => {
+    const neighbourRowIndex = rowIndex + offset[0];
+    const neighbourColumnIndex = columnIndex + offset[1];
+    // Only in adjacent tiles
+    if (neighbourRowIndex >= 0 && neighbourRowIndex < numberOfRows &&
+    neighbourColumnIndex >= 0 && neighbourColumnIndex < numberOfColumns) {
+      // check for bomb in adjacent tiles
+      if (bombBoard[neighbourRowIndex][neighbourColumnIndex] !== 'B') {
+        numberOfBombs++;
+      }
+    }
+  });
+  return numberOfBombs;
+}
+
+
+/* FUNCITON TO FLIP A TILE
+1. Check if tile has already been flipped
+2. Check if the tile already has a bomb in it
+3. Else, if no bombs, display # of adjacent bombs
+*/
+const flipTile = (playerBoard, bombBoard, rowIndex, columnIndex) => {
+  if (playerBoard[rowIndex][columnIndex] !== ' ') {
+    console.log('This tile has already been flipped!');
+    return;
+  } else if (bombBoard[rowIndex][columnIndex] === 'B') {
+    playerBoard[rowIndex][columnIndex] = 'B';
+  } else {
+    playerBoard[rowIndex][columnIndex] =
+    getNumberOfNeighborBombs(bombBoard, rowIndex, columnIndex);
+  }
+}
+
 
 
 /* FUNCTION TO PRINT THE BOARD TO CONSOLE
@@ -67,12 +119,15 @@ const printBoard = board => {
 }
 
 
+
 // TEST FUNCTIONS
-/*
 let playerBoard = generatePlayerBoard(3,4);
 let bombBoard = generateBombBoard(3,4,5);
 console.log('Player Board: ');
 printBoard(playerBoard);
 console.log('Bomb Board: ');
 printBoard(bombBoard);
-*/
+
+console.log('Updated Player Board:')
+flipTile(playerBoard, bombBoard, 0, 0);
+printBoard(playerBoard);

@@ -1,5 +1,7 @@
 # Minesweeper (CLI)
 
+WORK IN PROGRESS!
+
 A JS project from codecademy, learning to code.
 
 ## Getting Started
