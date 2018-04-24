@@ -9,7 +9,7 @@ DESCRIPTION: MINESWEEPER
 */
 
 
-/* CONST FUNCTION FOR A BLANK BOARD
+/* FUNCTION FOR A BLANK BOARD
 1. Add an empty space to each column per row
 2. Add each row to a larger game board, constructing the player board
 */
@@ -29,7 +29,7 @@ const generatePlayerBoard = (numberOfRows, numberOfColumns) => {
 
 
 
-/* CONST FUNCTION FOR BOMB BOARD
+/* FUNCTION FOR BOMB BOARD
 1. Dynamically generate bomb position on board
 2. Create game board of specified size
 3. Add bombs to random squares on game board
@@ -62,7 +62,7 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
 }
 
 
-/* FUCNTION TO DISPLAY THE AMT. OF ADJACENT BOMBS
+/* FUNCTION TO DISPLAY THE AMT. OF ADJACENT BOMBS
 1. Determine the size of a board
 2. use the location of a flipped tile
 3. use an array index offset system to check adjacent tiles for bombs
@@ -92,7 +92,7 @@ const getNumberOfNeighborBombs = (bombBoard, rowIndex, columnIndex) => {
 }
 
 
-/* FUNCITON TO FLIP A TILE
+/* FUNCTION TO FLIP A TILE
 1. Check if tile has already been flipped
 2. Check if the tile already has a bomb in it
 3. Else, if no bombs, display # of adjacent bombs
