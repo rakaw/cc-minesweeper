@@ -79,7 +79,7 @@ const getNumberOfNeighborBombs = (bombBoard, rowIndex, columnIndex) => {
   neighbourOffsets.forEach(offset => {
     const neighbourRowIndex = rowIndex + offset[0];
     const neighbourColumnIndex = columnIndex + offset[1];
-    // Only in adjacent tiles
+    // Only in adjacent tiles & tiles on the board
     if (neighbourRowIndex >= 0 && neighbourRowIndex < numberOfRows &&
     neighbourColumnIndex >= 0 && neighbourColumnIndex < numberOfColumns) {
       // check for bomb in adjacent tiles
