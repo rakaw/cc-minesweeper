@@ -157,23 +157,6 @@ class Board {
   }
 }
 
-
-
-/*
-// TEST FUNCTIONS
-// New variables for player board and bomb board functions
-let playerBoard = generatePlayerBoard(4,4);
-let bombBoard = generateBombBoard(4,4,5);
-console.log('Player Board: ');
-printBoard(playerBoard);
-console.log('Bomb Board: ');
-printBoard(bombBoard);
-
-// User input section (flipping tiles)
-console.log('Updated Player Board:')
-flipTile(playerBoard, bombBoard, 1, 1);
-printBoard(playerBoard);
-*/
-
+// Start a new game!
 const g = new Game(3,3,3); // create a new game instance!
 g.playMove(0,0); // flip a tile on position 0,0
