@@ -10,19 +10,24 @@ DESCRIPTION: MINESWEEPER
 
 
 
+/* CREATE GAME SUPERCLASS
+1. Create a template for a minsweeper game
+*/
 class Game {
   constructor (numberOfRows,numberOfColumns,numberOfBombs) {
     this._board = new Board(numberOfRows,numberOfColumns,numberOfBombs);
   }
+  // conditions for winning, losing, and continuing play
   playMove (rowIndex,columnIndex) {
     this._board.flipTile(rowIndex,columnIndex);
-    if (this._board.playerBoard[rowIndex][columnIndex] === 'B')) {
+    if (this._board.playerBoard[rowIndex][columnIndex] === 'B') {
       console.log('GAME OVER.');
       this._board.print()
-    } else if (this._board.hasSafeTiles()) {
+    } else if (!this._board.hasSafeTiles()) {
       console.log('YOU WIN!');
     } else {
-      continue;
+      console.log('Current Board:');
+      this._board.print();
     }
   }
 }
@@ -38,8 +43,8 @@ class Board {
     this._numberOfColumns = numberOfColumns;
     this._numberOfBombs = numberOfBombs;
     this._numberOfTiles = numberOfRows * numberOfColumns;
-    this._playerBoard = generatePlayerBoard(numberOfRows,numberOfColumns);
-    this._bombBoard = generateBombBoard(numberOfRows,numberOfColumns,
+    this._playerBoard = Board.generatePlayerBoard(numberOfRows,numberOfColumns);
+    this._bombBoard = Board.generateBombBoard(numberOfRows,numberOfColumns,
       numberOfBombs);
   }
   get playerBoard () {
@@ -100,7 +105,7 @@ class Board {
   1. Print it all to the console
   */
   print () {
-    console.log(board.map(row => row.join(' | ')).join('\n'));
+    console.log(this._playerBoard.map(row => row.join(' | ')).join('\n'));
   }
   /* FUNCTION FOR A BLANK BOARD
   1. Add an empty space to each column per row
@@ -110,9 +115,9 @@ class Board {
     // Create empty board
     let board = [];
     // For each row, create columns and push ' '
-    for (i = 0; i < numberOfRows; i++) {
+    for (let i = 0; i < numberOfRows; i++) {
       let row = [];
-      for (j = 0; j < numberOfColumns; j++) {
+      for (let j = 0; j < numberOfColumns; j++) {
         row.push(' ');
       }
       board.push(row);
@@ -128,9 +133,9 @@ class Board {
     // Create empty board
     let board = [];
     // For each row, create columns and push ' '
-    for (i = 0; i < numberOfRows; i++) {
+    for (let i = 0; i < numberOfRows; i++) {
       let row = [];
-      for (j = 0; j < numberOfColumns; j++) {
+      for (let j = 0; j < numberOfColumns; j++) {
         row.push(null);
       }
       board.push(row);
@@ -154,23 +159,7 @@ class Board {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*
 // TEST FUNCTIONS
 // New variables for player board and bomb board functions
 let playerBoard = generatePlayerBoard(4,4);
@@ -184,3 +173,7 @@ printBoard(bombBoard);
 console.log('Updated Player Board:')
 flipTile(playerBoard, bombBoard, 1, 1);
 printBoard(playerBoard);
+*/
+
+const g = new Game(3,3,3); // create a new game instance!
+g.playMove(0,0); // flip a tile on position 0,0
