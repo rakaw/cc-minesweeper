@@ -8,6 +8,46 @@ DESCRIPTION: MINESWEEPER
 
 */
 
+/* CLASS FOR BOARD
+1. Create supeclass: board
+*/
+class board {
+  constructor (numberOfRows,numberOfColumns,numberOfBombs) {
+    this._numberOfRows = numberOfRows;
+    this._numberOfColumns = numberOfColumns;
+    this._numberOfBombs = numberOfBombs;
+    this._numberOfTiles = numberOfRows * numberOfColumns;
+    this._playerBoard = generatePlayerBoard(numberOfRows,numberOfColumns);
+    this._bombBoard = generateBombBoard(numberOfRows,numberOfColumns,
+      numberOfBombs);
+  }
+  get playerBoard () {
+    return this._playerBoard;
+  }
+  /* FUNCTION TO FLIP A TILE
+  1. Check if tile has already been flipped
+  2. Check if the tile already has a bomb in it
+  3. Else, if no bombs, display # of adjacent bombs
+  */
+  const flipTile = (playerBoard, bombBoard, rowIndex, columnIndex) => {
+    // Is tile flipped?
+    if (playerBoard[rowIndex][columnIndex] !== ' ') {
+      console.log('This tile has already been flipped!');
+      return;
+      // Is there a bomb on the flipped tile?
+    } else if (bombBoard[rowIndex][columnIndex] === 'B') {
+      playerBoard[rowIndex][columnIndex] = 'B';
+      // If no bomb, state # of adjacent bombs
+    } else {
+      playerBoard[rowIndex][columnIndex] =
+      getNumberOfNeighborBombs(bombBoard, rowIndex, columnIndex);
+    }
+  }
+}
+
+
+
+
 
 /* FUNCTION FOR A BLANK BOARD
 1. Add an empty space to each column per row
@@ -89,27 +129,6 @@ const getNumberOfNeighborBombs = (bombBoard, rowIndex, columnIndex) => {
     }
   });
   return numberOfBombs;
-}
-
-
-/* FUNCTION TO FLIP A TILE
-1. Check if tile has already been flipped
-2. Check if the tile already has a bomb in it
-3. Else, if no bombs, display # of adjacent bombs
-*/
-const flipTile = (playerBoard, bombBoard, rowIndex, columnIndex) => {
-  // Is tile flipped?
-  if (playerBoard[rowIndex][columnIndex] !== ' ') {
-    console.log('This tile has already been flipped!');
-    return;
-    // Is there a bomb on the flipped tile?
-  } else if (bombBoard[rowIndex][columnIndex] === 'B') {
-    playerBoard[rowIndex][columnIndex] = 'B';
-    // If no bomb, state # of adjacent bombs
-  } else {
-    playerBoard[rowIndex][columnIndex] =
-    getNumberOfNeighborBombs(bombBoard, rowIndex, columnIndex);
-  }
 }
 
 
