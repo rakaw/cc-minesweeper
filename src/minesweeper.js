@@ -29,19 +29,57 @@ class board {
   2. Check if the tile already has a bomb in it
   3. Else, if no bombs, display # of adjacent bombs
   */
-  const flipTile = (playerBoard, bombBoard, rowIndex, columnIndex) => {
+  flipTile (rowIndex, columnIndex) {
     // Is tile flipped?
-    if (playerBoard[rowIndex][columnIndex] !== ' ') {
+    if (this._playerBoard[rowIndex][columnIndex] !== ' ') {
       console.log('This tile has already been flipped!');
       return;
       // Is there a bomb on the flipped tile?
-    } else if (bombBoard[rowIndex][columnIndex] === 'B') {
-      playerBoard[rowIndex][columnIndex] = 'B';
+    } else if (this._bombBoard[rowIndex][columnIndex] === 'B') {
+      this._playerBoard[rowIndex][columnIndex] = 'B';
       // If no bomb, state # of adjacent bombs
     } else {
-      playerBoard[rowIndex][columnIndex] =
-      getNumberOfNeighborBombs(bombBoard, rowIndex, columnIndex);
+      this._playerBoard[rowIndex][columnIndex] =
+      this.getNumberOfNeighborBombs(rowIndex, columnIndex);
     }
+    this._numberOfTiles--;
+  }
+  /* FUNCTION TO DISPLAY THE AMT. OF ADJACENT BOMBS
+  1. Determine the size of a board
+  2. use the location of a flipped tile
+  3. use an array index offset system to check adjacent tiles for bombs
+  4. If a bomb adjacent to the clicked tile exists, record w/ counter
+  5. Return # of bombs adjacent to a flipped tile
+  */
+  getNumberOfNeighborBombs (rowIndex, columnIndex) {
+    const neighbourOffsets = [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],
+    [1,1]];
+    const numberOfRows = this._bombBoard.length;
+    const numberOfColumns = this._bombBoard[0].length;
+    let numberOfBombs = 0;
+    // search adjacent tiles to current tile
+    neighbourOffsets.forEach(offset => {
+      const neighbourRowIndex = rowIndex + offset[0];
+      const neighbourColumnIndex = columnIndex + offset[1];
+      // Only in adjacent tiles & tiles on the board
+      if (neighbourRowIndex >= 0 && neighbourRowIndex < numberOfRows &&
+      neighbourColumnIndex >= 0 && neighbourColumnIndex < numberOfColumns) {
+        // check for bomb in adjacent tiles
+        if (this._bombBoard[neighbourRowIndex][neighbourColumnIndex] === 'B') {
+          numberOfBombs++;
+        }
+      }
+    });
+    return numberOfBombs;
+  }
+  hasSafeTiles () {
+    return this._numberOfTiles !== this._numberOfBombs;
+  }
+  /* FUNCTION TO PRINT THE BOARD TO CONSOLE
+  1. Print it all to the console
+  */
+  print () {
+    console.log(board.map(row => row.join(' | ')).join('\n'));
   }
 }
 
@@ -102,43 +140,11 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
 }
 
 
-/* FUNCTION TO DISPLAY THE AMT. OF ADJACENT BOMBS
-1. Determine the size of a board
-2. use the location of a flipped tile
-3. use an array index offset system to check adjacent tiles for bombs
-4. If a bomb adjacent to the clicked tile exists, record w/ counter
-5. Return # of bombs adjacent to a flipped tile
-*/
-const getNumberOfNeighborBombs = (bombBoard, rowIndex, columnIndex) => {
-  const neighbourOffsets = [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],
-  [1,1]];
-  const numberOfRows = bombBoard.length;
-  const numberOfColumns = bombBoard[0].length;
-  let numberOfBombs = 0;
-  // search adjacent tiles to current tile
-  neighbourOffsets.forEach(offset => {
-    const neighbourRowIndex = rowIndex + offset[0];
-    const neighbourColumnIndex = columnIndex + offset[1];
-    // Only in adjacent tiles & tiles on the board
-    if (neighbourRowIndex >= 0 && neighbourRowIndex < numberOfRows &&
-    neighbourColumnIndex >= 0 && neighbourColumnIndex < numberOfColumns) {
-      // check for bomb in adjacent tiles
-      if (bombBoard[neighbourRowIndex][neighbourColumnIndex] === 'B') {
-        numberOfBombs++;
-      }
-    }
-  });
-  return numberOfBombs;
-}
 
 
 
-/* FUNCTION TO PRINT THE BOARD TO CONSOLE
-1. Print it all to the console
-*/
-const printBoard = board => {
-  console.log(board.map(row => row.join(' | ')).join('\n'));
-}
+
+
 
 
 
