@@ -81,63 +81,65 @@ class board {
   print () {
     console.log(board.map(row => row.join(' | ')).join('\n'));
   }
+  /* FUNCTION FOR A BLANK BOARD
+  1. Add an empty space to each column per row
+  2. Add each row to a larger game board, constructing the player board
+  */
+  static generatePlayerBoard (numberOfRows, numberOfColumns) {
+    // Create empty board
+    let board = [];
+    // For each row, create columns and push ' '
+    for (i = 0; i < numberOfRows; i++) {
+      let row = [];
+      for (j = 0; j < numberOfColumns; j++) {
+        row.push(' ');
+      }
+      board.push(row);
+    }
+    return board;
+  }
+  /* FUNCTION FOR BOMB BOARD
+  1. Dynamically generate bomb position on board
+  2. Create game board of specified size
+  3. Add bombs to random squares on game board
+  */
+  static generateBombBoard (numberOfRows, numberOfColumns, numberOfBombs) {
+    // Create empty board
+    let board = [];
+    // For each row, create columns and push ' '
+    for (i = 0; i < numberOfRows; i++) {
+      let row = [];
+      for (j = 0; j < numberOfColumns; j++) {
+        row.push(null);
+      }
+      board.push(row);
+    }
+    // Bomb counter (takes from numberOfBombs parameter)
+    // After learning control flow: stop bombs from replacing existing bombs
+    let numberOfBombsPlaced = 0;
+    while (numberOfBombsPlaced < numberOfBombs) {
+      // Randomize bomb placement
+      let randomRowIndex = Math.floor(Math.random() * numberOfRows);
+      let randomColumnIndex = Math.floor(Math.random() * numberOfColumns);
+      // If tile doesn't already have a bomb, then it is possible to place a bomb
+      if (board[randomRowIndex][randomColumnIndex] !== 'B') {
+        board[randomRowIndex][randomColumnIndex] = 'B';
+        numberOfBombsPlaced++;
+      }
+    }
+    return board;
+  }
 }
 
 
 
 
 
-/* FUNCTION FOR A BLANK BOARD
-1. Add an empty space to each column per row
-2. Add each row to a larger game board, constructing the player board
-*/
-const generatePlayerBoard = (numberOfRows, numberOfColumns) => {
-  // Create empty board
-  let board = [];
-  // For each row, create columns and push ' '
-  for (i = 0; i < numberOfRows; i++) {
-    let row = [];
-    for (j = 0; j < numberOfColumns; j++) {
-      row.push(' ');
-    }
-    board.push(row);
-  }
-  return board;
-}
 
 
 
-/* FUNCTION FOR BOMB BOARD
-1. Dynamically generate bomb position on board
-2. Create game board of specified size
-3. Add bombs to random squares on game board
-*/
-const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
-  // Create empty board
-  let board = [];
-  // For each row, create columns and push ' '
-  for (i = 0; i < numberOfRows; i++) {
-    let row = [];
-    for (j = 0; j < numberOfColumns; j++) {
-      row.push(null);
-    }
-    board.push(row);
-  }
-  // Bomb counter (takes from numberOfBombs parameter)
-  // After learning control flow: stop bombs from replacing existing bombs
-  let numberOfBombsPlaced = 0;
-  while (numberOfBombsPlaced < numberOfBombs) {
-    // Randomize bomb placement
-    let randomRowIndex = Math.floor(Math.random() * numberOfRows);
-    let randomColumnIndex = Math.floor(Math.random() * numberOfColumns);
-    // If tile doesn't already have a bomb, then it is possible to place a bomb
-    if (board[randomRowIndex][randomColumnIndex] !== 'B') {
-      board[randomRowIndex][randomColumnIndex] = 'B';
-      numberOfBombsPlaced++;
-    }
-  }
-  return board;
-}
+
+
 
 
 
