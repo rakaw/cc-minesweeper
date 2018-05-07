@@ -1,7 +1,5 @@
 # Minesweeper (CLI)
 
-WORK IN PROGRESS!
-
 A JS project from codecademy, learning to code.
 
 ## Getting Started
@@ -26,7 +24,7 @@ What you need:
 2. Extract the zip file if needed
 3. Open Terminal (git bash for windows)
 4. cd into cc-minesweeper/src
-5. Use node.js to run Minesweeper!
+5. Use node.js to run Minesweeper! (see /src/game.js for info)
 
 ```
 cd ~/cc-minesweeper/src
