@@ -12,7 +12,7 @@
     "url": "git+https://github.com/rakaw/cc-minesweeper.git"
   },
   "author": "Raka Wiradinata",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/rakaw/cc-minesweeper/issues"
   },
