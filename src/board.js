@@ -1,43 +1,7 @@
-/*
-
-DESCRIPTION: MINESWEEPER
-
-- Minesweeper w/ bash
-- Dynamically create a game board (player guesses) & a bomb board
-(hold bomb locations)
-
-*/
-
-
-
-/* CREATE GAME SUPERCLASS
-1. Create a template for a minsweeper game
-*/
-class Game {
-  constructor (numberOfRows,numberOfColumns,numberOfBombs) {
-    this._board = new Board(numberOfRows,numberOfColumns,numberOfBombs);
-  }
-  // conditions for winning, losing, and continuing play
-  playMove (rowIndex,columnIndex) {
-    this._board.flipTile(rowIndex,columnIndex);
-    if (this._board.playerBoard[rowIndex][columnIndex] === 'B') {
-      console.log('GAME OVER.');
-      this._board.print()
-    } else if (!this._board.hasSafeTiles()) {
-      console.log('YOU WIN!');
-    } else {
-      console.log('Current Board:');
-      this._board.print();
-    }
-  }
-}
-
-
-
 /* CLASS FOR BOARD
 1. Create supeclass: board
 */
-class Board {
+export class Board {
   constructor (numberOfRows,numberOfColumns,numberOfBombs) {
     this._numberOfRows = numberOfRows;
     this._numberOfColumns = numberOfColumns;
@@ -156,7 +120,3 @@ class Board {
     return board;
   }
 }
-
-// Start a new game!
-const g = new Game(3,3,3); // create a new game instance!
-g.playMove(0,0); // flip a tile on position 0,0
