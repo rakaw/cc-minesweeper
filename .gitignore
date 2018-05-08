@@ -2,3 +2,4 @@ log.txt
 .DS_Store
 /src/.DS_Store
 /node_modules/
+.babelrc
