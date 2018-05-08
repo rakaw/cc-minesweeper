@@ -29,7 +29,7 @@ class Game {
 
     if (this._board.playerBoard[rowIndex][columnIndex] === 'B') {
       console.log('GAME OVER.');
-      this._board.print()
+      this._board.print();
     } else if (!this._board.hasSafeTiles()) {
       console.log('YOU WIN!');
     } else {
