@@ -1,3 +1,9 @@
+#MISSING FILES#
+Project needs to be rebuilt
+
+
+
+
 # Minesweeper (CLI)
 
 A JS project from codecademy, learning to code.
