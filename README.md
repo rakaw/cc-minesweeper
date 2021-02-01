@@ -45,7 +45,7 @@ node minesweeper.js
 
 ## Authors
 
-* **Raka Wiradinata** - *Initial work* - [RakaW](https://github.com/RakaW)
+* **rakaw** - *Initial work* - [rakaw](https://github.com/rakaw)
 
 ## License
 
